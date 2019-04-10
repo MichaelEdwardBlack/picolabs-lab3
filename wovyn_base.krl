@@ -1,6 +1,7 @@
-ruleset com.blacklite.woven_base {
+ruleset com.blacklite.wovyn_base {
   meta {
-    author: "Michael Black"
+    name "Wovyn Base"
+    author "Michael Black"
   }
 
   rule process_heartbeat {
