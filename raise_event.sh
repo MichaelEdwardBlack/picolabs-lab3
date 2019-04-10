@@ -5,12 +5,14 @@ OLD_HOST=${HOST}
 OLD_PORT=${PORT}
 URL="http://${HOST}:${PORT}/sky/event"
 OLD_ECI=${ECI}
-OLD_DID=${DID}
+OLD_EID=${EID}
 OLD_DOMAIN=${DOMAIN}
 OLD_TYPE=${TYPE}
 
 if [ $# = 0 ]; then
-  echo "curl ${URL}/${ECI}/${DID} --data \"_domain=${DOMAIN}&_type=${TYPE}"
+  echo "curl ${URL}/${ECI}/${EID} --data \"_domain=${DOMAIN}&_type=${TYPE}"
+  NEXT_EID=$(expr $OLD_EID + 1)
+  sed -i "s/EID=${OLD_EID}/EID=${NEXT_EID}/g" ${VARIABLE_FILE}
 else
   while [ "$1" != "" ]; do
   	case $1 in
@@ -31,9 +33,9 @@ else
         command="s/${OLD_ECI}/$1/g"
         sed -i ${command} ${VARIABLE_FILE}
         ;;
-      -did | --set_did)
+      -eid | --set_eid)
         shift
-        command="s/${OLD_DID}/$1/g"
+        command="s/${OLD_EID}/$1/g"
         sed -i ${command} ${VARIABLE_FILE}
         ;;
       -domain | --set_domain)
