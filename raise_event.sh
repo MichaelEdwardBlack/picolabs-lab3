@@ -3,14 +3,14 @@ VARIABLE_FILE="raise_event_variables.txt"
 source ${VARIABLE_FILE}
 OLD_HOST=${HOST}
 OLD_PORT=${PORT}
-URL="http://${HOST}:${PORT}/sky/event"
 OLD_ECI=${ECI}
 OLD_EID=${EID}
 OLD_DOMAIN=${DOMAIN}
 OLD_TYPE=${TYPE}
 
 if [ $# = 0 ]; then
-  curl ${URL}/${ECI}/${EID} --data _domain=${DOMAIN}&_type=${TYPE}
+  URL="http://${HOST}:${PORT}/sky/event"
+  curl "${URL}/${ECI}/${EID}/${DOMAIN}/${TYPE}"
   NEXT_EID=$(expr $OLD_EID + 1)
   sed -i "s/EID=${OLD_EID}/EID=${NEXT_EID}/g" ${VARIABLE_FILE}
 else
