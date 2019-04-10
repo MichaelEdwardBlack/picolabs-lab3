@@ -1,0 +1,6 @@
+HOST="10.37.124.138"
+PORT="8080"
+ECI="BbQSL8sVVuE2qCNqsTBBhv"
+DID="cju9zrlss0000oqou946de0ky"
+DOMAIN="wovyn"
+TYPE="heartbeat"
