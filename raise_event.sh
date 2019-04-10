@@ -10,9 +10,17 @@ OLD_TYPE=${TYPE}
 
 if [ $# = 0 ]; then
   URL="http://${HOST}:${PORT}/sky/event"
-  curl "${URL}/${ECI}/${EID}/${DOMAIN}/${TYPE}"
+  CURL_COMMAND="${URL}/${ECI}/${EID}/${DOMAIN}/${TYPE}"
   NEXT_EID=$(expr $OLD_EID + 1)
   sed -i "s/EID=${OLD_EID}/EID=${NEXT_EID}/g" ${VARIABLE_FILE}
+
+  echo "USING COMMAND:"
+  echo "${CURL_COMMAND}"
+  echo ""
+  echo "RESPONSE:"
+  curl ${CURL_COMMAND}
+  echo ""
+
 else
   while [ "$1" != "" ]; do
   	case $1 in
