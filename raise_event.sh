@@ -15,7 +15,7 @@ if [ $# = 0 ]; then
   sed -i "s/EID=${OLD_EID}/EID=${NEXT_EID}/g" ${VARIABLE_FILE}
 
   echo "USING COMMAND:"
-  echo "${CURL_COMMAND}"
+  echo "curl ${CURL_COMMAND}"
   echo ""
   echo "RESPONSE:"
   curl ${CURL_COMMAND}
