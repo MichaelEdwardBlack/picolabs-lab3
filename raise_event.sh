@@ -1,5 +1,5 @@
 #!bin/bash
-VARIABLE_FILE="raise_event_variables.sh"
+VARIABLE_FILE="raise_event_variables.txt"
 source ${VARIABLE_FILE}
 OLD_HOST=${HOST}
 OLD_PORT=${PORT}
@@ -10,7 +10,7 @@ OLD_DOMAIN=${DOMAIN}
 OLD_TYPE=${TYPE}
 
 if [ $# = 0 ]; then
-  echo "curl ${URL}/${ECI}/${EID} --data \"_domain=${DOMAIN}&_type=${TYPE}"
+  curl ${URL}/${ECI}/${EID} --data \"_domain=${DOMAIN}&_type=${TYPE}
   NEXT_EID=$(expr $OLD_EID + 1)
   sed -i "s/EID=${OLD_EID}/EID=${NEXT_EID}/g" ${VARIABLE_FILE}
 else
