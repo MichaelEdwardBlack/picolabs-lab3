@@ -1,6 +1,6 @@
 HOST="10.37.126.10"
 PORT="8080"
 ECI="BbQSL8sVVuE2qCNqsTBBhv"
-EID=22
+EID=26
 DOMAIN="wovyn"
 TYPE="heartbeat"

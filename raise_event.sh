@@ -10,7 +10,7 @@ OLD_TYPE=${TYPE}
 
 if [ $# = 0 ]; then
   URL="http://${HOST}:${PORT}/sky/event"
-  CURL_COMMAND="${URL}/${ECI}/${EID}/${DOMAIN}/${TYPE}"
+  CURL_COMMAND="${URL}/${ECI}/terminalEvent${EID}/${DOMAIN}/${TYPE}"
   NEXT_EID=$(expr $OLD_EID + 1)
   sed -i "s/EID=${OLD_EID}/EID=${NEXT_EID}/g" ${VARIABLE_FILE}
 
