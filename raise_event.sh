@@ -1,5 +1,6 @@
 #!bin/bash
 VARIABLE_FILE="raise_event_variables.txt"
+HEADER="Content-Type:application/json"
 source ${VARIABLE_FILE}
 OLD_HOST=${HOST}
 OLD_PORT=${PORT}
@@ -10,15 +11,15 @@ OLD_TYPE=${TYPE}
 
 if [ $# = 0 ]; then
   URL="http://${HOST}:${PORT}/sky/event"
-  CURL_COMMAND="${URL}/${ECI}/terminalEvent${EID}/${DOMAIN}/${TYPE}"
+  FULL_URL="${URL}/${ECI}/${EID}/${DOMAIN}/${TYPE}"
   NEXT_EID=$(expr $OLD_EID + 1)
   sed -i "s/EID=${OLD_EID}/EID=${NEXT_EID}/g" ${VARIABLE_FILE}
 
-  echo "USING COMMAND:"
-  echo "curl ${CURL_COMMAND}"
+  echo "USING URL:"
+  echo "${FULL_URL}"
   echo ""
   echo "RESPONSE:"
-  curl ${CURL_COMMAND}
+  curl --header ${HEADER} --data @data.json ${FULL_URL}
   echo ""
 
 else
